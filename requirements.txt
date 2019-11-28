@@ -2,3 +2,4 @@ lxml
 BeautifulSoup
 numpy
 scikits.audiolab
+flask
