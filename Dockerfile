@@ -6,22 +6,20 @@ RUN apt install -y espeak
 RUN apt install -y ffmpeg 
 RUN apt install -y libsndfile1 
 RUN apt install -y libsndfile1-dev
-RUN apt install -y python 
-RUN python --version
-RUN apt install -y python-dev 
-RUN apt install -y python-pip 
-RUN apt install -y python-numpy 
-RUN apt install -y python-lxml 
-RUN apt install -y python-bs4
+RUN apt install -y libpython2-dev
+RUN apt install -y python3-minimal 
+RUN apt install -y python3
+RUN apt install -y python3-dev 
+RUN apt install -y python3-pip #is python2-pip obsolete? 
+RUN pip install numpy
+RUN pip install lxml 
+RUN pip install  beautifulsoup4
 RUN rm -rf /var/lib/apt/lists/*
 RUN mkdir -p /usr/src/app
-
-WORKDIR /usr/src/app
-RUN git clone https://github.com/readbeyond/aeneas.git aeneas_root
-
+WORKDIR /usr/src/app 
+RUN git clone https://github.com/uvoxapp/aeneas.git aeneas_root
 COPY requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r requirements.txt
-
 COPY . /usr/src/app/
 RUN ln  -s aeneas_root/aeneas/ aeneas
 # COPY util/*.py /usr/src/app/util/

@@ -1,5 +1,5 @@
 lxml
-BeautifulSoup
+BeautifulSoup4
 numpy
 scikits.audiolab
 flask
